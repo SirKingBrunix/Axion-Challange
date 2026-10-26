@@ -19,7 +19,7 @@ Doświadczenie będzie wykonywane na zbiorze danych z próbkami pacjentów na po
 Baza zawiera 1025 próbek.
 #### Exploratory Data Analysis
 Przykładowe histogramy cech:
-![[Images/Pasted image 20261025154701.png|335]]![[Pasted image 20261025154723.png|340]]
+![](Images/Pasted image 20261025154701.png|335)![[Pasted image 20261025154723.png|340]]
 ![[Pasted image 20261025154738.png|335]]![[Pasted image 20261025154853.png|335]]
 
 Na podstawie przeprowadzonej analizy eksploracyjnej można zauważyć, że niektóre cechy wykazują różnice w rozkładach pomiędzy osobami z chorobą a osobami bez rozpoznanej choroby. Przykładem są `thalach`, `oldpeak` oraz `thal`. Jednocześnie rozkłady części cech nakładają się na siebie, dlatego na tym etapie nie można jednoznacznie określić, jak skutecznie model będzie rozróżniał obie klasy.
