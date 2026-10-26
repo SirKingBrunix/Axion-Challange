@@ -49,16 +49,26 @@ Algorytm patrzy na k najbliższych punktów w przestrzeni cech i na podstawie te
 Korzystam z zaprogramowanego modelu z biblioteki sklearn, dla którego ustawiam parametry. Na początek n_neighbours = 1:
 
 **Wyniki:**
+
+
+
 <img src="Images/Pasted%20image%2020261025114155.png" alt="Pasted image 20261025114155.png" width="500">
 ***
 Obserwacja:
 wyniki algorytmu kNN dla (n_neighbours = 1) są zaskakująco wysokie. Może być to spowodowane zjawiskiem Data Leakage. Jeżeli w zbiorze testowym są powtórki ze zbioru treningowego, to model znajduje punkty niemal idealnie:
+
+
+
+
 
 <img src="Images/Pasted%20image%2020261025122003.png" alt="Pasted image 20261025122003.png" width="500">
 
 Zatem trzeba pozbyć się duplikatów ze zbioru danych za pomocą komendy:  
 	df = df.drop_duplicates().reset_index(drop=True)
 Niestety z tego powodu liczba rekordów zmniejszyła się do 302. Ponownie stosujemy analizę balansu klas z wynikami poniżej:
+
+
+
 
 <img src="Images/Pasted%20image%2020261026155155.png" alt="Pasted image 20261026155155.png" width="500">
 
@@ -68,9 +78,17 @@ Sprawdzamy wyniki dla $n_{\text{neighbors}} \in \{1, 3, 5\}$. Otrzymujemy teraz 
 
 Testowe wyniki:
 
+
+
+
 <img src="Images/Pasted%20image%2020261025134832.png" alt="Pasted image 20261025134832.png" width="500">
 
+
+
 Walidacyjne wyniki:
+
+
+
 
 <img src="Images/Pasted%20image%2020261025134847.png" alt="Pasted image 20261025134847.png" width="500">
 
@@ -78,10 +96,13 @@ Walidacyjne wyniki:
 #### Sieć Neuronowa z ReLU
 
 Sieć neuronowa - algorytm stworzony z warstw neuronowych, które przetwarzają dane. Warstwa pierwsza przyjmuje dane. Następne (ukryte) warstwy przetwarzają jakie wnioski płyną z warstwy pierwszej. Ostatnia warstwa zwraca predykcję. Do implementacji sieci wykorzystuję bibliotekę TensorFlow, która umożliwia definiowanie architektury sieci, dobór parametrów oraz przeprowadzenie procesu trenowania.
-$\operatorname{ReLU}(x)=\max(0,x)$
+$\text{ReLU}(x)=\max(0,x)$
 
 Pierwszy prototyp struktury wygląda następująco z funkcją aktywacji ReLU (Rectified Linear Unit):
-$$\operatorname{ReLU}(x)=\max(0,x)$$
+$$\text{ReLU}(x)=\max(0,x)$$
+
+
+
 
 <img src="Images/Pasted%20image%2020261025185249.png" alt="Pasted image 20261025185249.png" width="500">
 
@@ -100,9 +121,14 @@ Korzystam również z funkcji EarlyStopping, która zatrzymuje proces uczenia mo
 - epochs = 50
 - batch_size = 8
 Otrzymujemy wyniki (przy czym val_loss jest liczony na podstawie splitu danych testowych, więc może się znacząco różnić od wartości funkcji straty dla danych walidacyjnych):
+
+
 <img src="Images/Pasted%20image%2020261025195044.png" alt="Pasted image 20261025195044.png" width="500">
 
 Poniższe dane są liczone na testowej części danych:
+
+
+
 <img src="Images/Pasted%20image%2020261025195103.png" alt="Pasted image 20261025195103.png" width="500">
 
 W kolejnym eksperymencie rozszerzam architekturę o funkcję dropout by wyłączać z zadanym prawdopodobieństwem pewne neurony w trakcie uczenia. To ogranicza nadmierne uzależnienie modelu od konkretnych jednostek sieci.
@@ -126,8 +152,14 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 8 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.51}$
 	- wykresy treningowe:
+
+
+
 	  <img src="Images/Pasted%20image%2020261026142251.png" alt="Pasted image 20261026142251.png" width="500">
 	- wyniki na danych testowych:
+
+
+
 	 	 <img src="Images/Pasted%20image%2020261026142323.png" alt="Pasted image 20261026142323.png" width="639">
 - Model maksymalnej dokładności:
 	- parametry:
@@ -137,8 +169,12 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 32 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.83}$
 	- wykresy treningowe:
+
+ - 
 	  	  <img src="Images/Pasted%20image%2020261026143113.png" alt="Pasted image 20261026143113.png" width="500">
 	- wyniki na danych testowych:
+
+
 	 <img src="Images/Pasted%20image%2020261026143129.png" alt="Pasted image 20261026143129.png" width="643">
 
 #### Sigmoid:
@@ -150,8 +186,12 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 16 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.51}$
 	- wykresy treningowe:
+
+
 	  <img src="Images/Pasted%20image%2020261026143627.png" alt="Pasted image 20261026143627.png" width="500">
 	- wyniki na danych testowych:
+
+
 	  <img src="Images/Pasted%20image%2020261026143648.png" alt="Pasted image 20261026143648.png" width="500">
 - Model maksymalnej dokładności:
 	- parametry:
@@ -161,8 +201,12 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 32 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.78}$
 	- wykresy treningowe:
+
+
 	  <img src="Images/Pasted%20image%2020261026143752.png" alt="Pasted image 20261026143752.png" width="500">
 	- wyniki na danych testowych:
+
+
 	 <img src="Images/Pasted%20image%2020261026143803.png" alt="Pasted image 20261026143803.png" width="500">
 ***
 ### Wnioski
