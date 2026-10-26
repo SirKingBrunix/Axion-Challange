@@ -169,8 +169,8 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 32 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.83}$
 	- wykresy treningowe:
-
- - 
+ 
+  
 	  	  <img src="Images/Pasted%20image%2020261026143113.png" alt="Pasted image 20261026143113.png" width="500">
 	- wyniki na danych testowych:
 
