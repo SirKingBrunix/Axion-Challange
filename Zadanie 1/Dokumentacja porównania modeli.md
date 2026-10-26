@@ -19,8 +19,9 @@ Doświadczenie będzie wykonywane na zbiorze danych z próbkami pacjentów na po
 Baza zawiera 1025 próbek.
 #### Exploratory Data Analysis
 Przykładowe histogramy cech:
-<img src="Images/Pasted%20image%2020261025154701.png" width="335">![[Pasted image 20261025154723.png|340]]
-![[Pasted image 20261025154738.png|335]]![[Pasted image 20261025154853.png|335]]
+<img src="Images/Pasted%20image%2020261025154701.png" width="335"><img src="Images/Pasted%20image%2020261025154723.png" alt="Pasted image 20261025154723.png" width="340">
+<img src="Images/Pasted%20image%2020261025154738.png" alt="Pasted image 20261025154738.png" width="335">
+<img src="Images/Pasted%20image%2020261025154853.png" alt="Pasted image 20261025154853.png" width="335">
 
 Na podstawie przeprowadzonej analizy eksploracyjnej można zauważyć, że niektóre cechy wykazują różnice w rozkładach pomiędzy osobami z chorobą a osobami bez rozpoznanej choroby. Przykładem są `thalach`, `oldpeak` oraz `thal`. Jednocześnie rozkłady części cech nakładają się na siebie, dlatego na tym etapie nie można jednoznacznie określić, jak skutecznie model będzie rozróżniał obie klasy.
 
@@ -35,7 +36,7 @@ Następnie przeprowadzamy skalowanie cech numerycznych za pomocą funkcji Standa
 #### Analiza balansu klas
 Sprawdzamy liczebność poszczególnych klas zmiennej docelowej. Pozwala to ocenić, czy zbiór danych jest zbalansowany, czy też jedna z klas występuje znacznie częściej od drugiej. Jeżeli proporcje klas są zbliżone, nie ma początkowej potrzeby stosowania oversamplingu.
 
-![[Pasted image 20261026154757.png]]
+<img src="Images/Pasted%20image%2020261026154757.png" alt="Pasted image 20261026154757.png" width="500">
 
 Jako, że wyniki są zbliżone, to decydujemy się nie korzystać z metody oversamplingu.
 ***
@@ -45,30 +46,30 @@ Algorytm patrzy na k najbliższych punktów w przestrzeni cech i na podstawie te
 Korzystam z zaprogramowanego modelu z biblioteki sklearn, dla którego ustawiam parametry. Na początek n_neighbours = 1:
 
 **Wyniki:**
-![[Pasted image 20261025114155.png]]
+<img src="Images/Pasted%20image%2020261025114155.png" alt="Pasted image 20261025114155.png" width="500">
 ***
 Obserwacja:
 wyniki algorytmu kNN dla (n_neighbours = 1) są zaskakująco wysokie. Może być to spowodowane zjawiskiem Data Leakage. Jeżeli w zbiorze testowym są powtórki ze zbioru treningowego, to model znajduje punkty niemal idealnie:
 
-![[Pasted image 20261025122003.png]]
+<img src="Images/Pasted%20image%2020261025122003.png" alt="Pasted image 20261025122003.png" width="500">
 
 Zatem trzeba pozbyć się duplikatów ze zbioru danych za pomocą komendy:  
 	df = df.drop_duplicates().reset_index(drop=True)
 Niestety z tego powodu liczba rekordów zmniejszyła się do 302. Ponownie stosujemy analizę balansu klas z wynikami poniżej:
 
-![[Pasted image 20261026155155.png]]
+<img src="Images/Pasted%20image%2020261026155155.png" alt="Pasted image 20261026155155.png" width="500">
 
 Na ich podstawie decyduję się ponownie na na nie korzystanie z metody oversampling.
 ***
-Sprawdzamy wyniki dla $n\_neighbors = \{1, 3, 5 \}$. Otrzymujemy teraz realniejsze wyniki. Po sprawdzeniu zarówno zbiorze walidacyjnym najlepsze dla $n\_neighbors = 5$:
+Sprawdzamy wyniki dla $n_{\text{neighbors}} \in \{1, 3, 5\}$. Otrzymujemy teraz realniejsze wyniki. Po sprawdzeniu zarówno zbiorze walidacyjnym najlepsze dla $n_{\text{neighbors}} = 5$:
 
 Testowe wyniki:
 
-![[Pasted image 20261025134832.png]]
+<img src="Images/Pasted%20image%2020261025134832.png" alt="Pasted image 20261025134832.png" width="500">
 
 Walidacyjne wyniki:
 
-![[Pasted image 20261025134847.png]]
+<img src="Images/Pasted%20image%2020261025134847.png" alt="Pasted image 20261025134847.png" width="500">
 
 ***
 #### Sieć Neuronowa z ReLU
@@ -79,7 +80,7 @@ $\operatorname{ReLU}(x)=\max(0,x)$
 Pierwszy prototyp struktury wygląda następująco z funkcją aktywacji ReLU (Rectified Linear Unit):
 $$\operatorname{ReLU}(x)=\max(0,x)$$
 
-![[Pasted image 20261025185249.png]]
+<img src="Images/Pasted%20image%2020261025185249.png" alt="Pasted image 20261025185249.png" width="500">
 
 Jako, że nasz wynik to binarna klasyfikacja, to w warstwie wyjściowej wystarczy użyć jednego neuronu z funkcją aktywacji sigmoid, by otrzymać wynik. Do uzyskania końcowej klasy stosuję próg decyzyjny równy 0,5. Jeśli przewidywane prawdopodobieństwo jest mniejsze niż 0,5, model przypisuje klasę 0. W przeciwnym przypadku przypisuje klasę 1.
 
@@ -96,10 +97,10 @@ Korzystam również z funkcji EarlyStopping, która zatrzymuje proces uczenia mo
 - epochs = 50
 - batch_size = 8
 Otrzymujemy wyniki (przy czym val_loss jest liczony na podstawie splitu danych testowych, więc może się znacząco różnić od wartości funkcji straty dla danych walidacyjnych):
-![[Pasted image 20261025195044.png]]
+<img src="Images/Pasted%20image%2020261025195044.png" alt="Pasted image 20261025195044.png" width="500">
 
 Poniższe dane są liczone na testowej części danych:
-![[Pasted image 20261025195103.png]]
+<img src="Images/Pasted%20image%2020261025195103.png" alt="Pasted image 20261025195103.png" width="500">
 
 W kolejnym eksperymencie rozszerzam architekturę o funkcję dropout by wyłączać z zadanym prawdopodobieństwem pewne neurony w trakcie uczenia. To ogranicza nadmierne uzależnienie modelu od konkretnych jednostek sieci.
 
@@ -122,9 +123,9 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 8 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.51}$
 	- wykresy treningowe:
-	  ![[Pasted image 20261026142251.png]]
+	  <img src="Images/Pasted%20image%2020261026142251.png" alt="Pasted image 20261026142251.png" width="500">
 	- wyniki na danych testowych:
-	 ![[Pasted image 20261026142323.png|639]]
+	 	 <img src="Images/Pasted%20image%2020261026142323.png" alt="Pasted image 20261026142323.png" width="639">
 - Model maksymalnej dokładności:
 	- parametry:
 		- 16 - liczba neuronów
@@ -133,9 +134,9 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 32 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.83}$
 	- wykresy treningowe:
-	  ![[Pasted image 20261026143113.png]]
+	  	  <img src="Images/Pasted%20image%2020261026143113.png" alt="Pasted image 20261026143113.png" width="500">
 	- wyniki na danych testowych:
-	 ![[Pasted image 20261026143129.png|643]]
+	 <img src="Images/Pasted%20image%2020261026143129.png" alt="Pasted image 20261026143129.png" width="643">
 
 #### Sigmoid:
 - Model minimalnej straty:
@@ -146,9 +147,9 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 16 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.51}$
 	- wykresy treningowe:
-	  ![[Pasted image 20261026143627.png]]
+	  <img src="Images/Pasted%20image%2020261026143627.png" alt="Pasted image 20261026143627.png" width="500">
 	- wyniki na danych testowych:
-	 ![[Pasted image 20261026143648.png]]
+	  <img src="Images/Pasted%20image%2020261026143648.png" alt="Pasted image 20261026143648.png" width="500">
 - Model maksymalnej dokładności:
 	- parametry:
 		- 8 - liczba neuronów
@@ -157,9 +158,9 @@ Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmnie
 		- 32 - batch size
 	- wartość funkcji straty dla danych walidacyjnych: ${}{}$ ${\approx}{0.78}$
 	- wykresy treningowe:
-	  ![[Pasted image 20261026143752.png]]
+	  <img src="Images/Pasted%20image%2020261026143752.png" alt="Pasted image 20261026143752.png" width="500">
 	- wyniki na danych testowych:
-	 ![[Pasted image 20261026143803.png]]
+	 <img src="Images/Pasted%20image%2020261026143803.png" alt="Pasted image 20261026143803.png" width="500">
 ***
 ### Wnioski
 Zestawię wszystkie dokładności omawianych modeli:
