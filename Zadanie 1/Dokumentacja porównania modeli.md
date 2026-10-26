@@ -19,7 +19,8 @@ Doświadczenie będzie wykonywane na zbiorze danych z próbkami pacjentów na po
 Baza zawiera 1025 próbek.
 #### Exploratory Data Analysis
 Przykładowe histogramy cech:
-<img src="Images/Pasted%20image%2020261025154701.png" width="335"><img src="Images/Pasted%20image%2020261025154723.png" alt="Pasted image 20261025154723.png" width="340">
+<img src="Images/Pasted%20image%2020261025154701.png" width="335">
+<img src="Images/Pasted%20image%2020261025154723.png" alt="Pasted image 20261025154723.png" width="335">
 <img src="Images/Pasted%20image%2020261025154738.png" alt="Pasted image 20261025154738.png" width="335">
 <img src="Images/Pasted%20image%2020261025154853.png" alt="Pasted image 20261025154853.png" width="335">
 
