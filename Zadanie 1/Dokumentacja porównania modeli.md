@@ -1,3 +1,5 @@
+## Dokumentacja
+
 #### Problem badawczy
 Czy sieć korzystająca jedynie z funkcji aktywacji ReLU w warstwach ukrytych, będzie miała wyższe wyniki (zdefiniowane jako dokładność na zbiorze testowym) niż ta korzystająca jedynie z funkcji aktywacji sigmoida w warstwach ukrytych? Czy najoptymalniejsze hiperparametry (z pewnego wybranego zakresu przeszukiwania) będą takie same dla obu funkcji? Jak z zadanym problemem poradzi sobie algorytm kNN?
 #### Hipoteza
@@ -240,5 +242,8 @@ Doświadczenie:
 2. Parametry okazały się różne. Trzeba zaznaczyć, że dla tych samych parametrów, ale różnych funkcji aktywacji, modele prawdopodobnie miałyby zbliżone wartości dokładności do modeli, które zostały przetestowane. Ponownie, ze względu na mały rozmiar bazy danych nie ma możliwości klarownego udowodnienia tego punktu, więc analiza na większym zbiorze mogłaby wykazać duże różnice hiperparametryczne lub pokazać, że są one niewielkie.
 3. Model kNN wcale nie okazał się być słabszy od sieci neuronowych. To pokazuje, że do pewnych prostych klasyfikacji, szczególnie na niewielkich zbiorach danych, modele nie będące sieciami neuronowymi mogą sprawdzać się równie dobrze, a są mają znacząco prostszą strukturze.
 
-															Wrocław
-															Bruno Niklasiewcz
+
+<div align="right">
+Wrocław<br>
+Bruno Niklasiewicz
+</div>
