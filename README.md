@@ -3,3 +3,4 @@ Zadanie zawiera zarówno cały kod doświadczenia, jaki i dokumentację w dwóch
 Polecam jednak wersję tworzoną w edytorze Obsisian, gdyż tam wszystko dobrze się formatuje. Trzeba ściągnąć zdjęcia i plik do tego samego folderu, i wszystko powinno poprawnie się sformatować.
 
 # Zadanie 2
+Zadanie zawiera kod w formacie .ipynb oraz notatkę z analizowanych po wykładzie zagadnień
