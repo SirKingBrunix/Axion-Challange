@@ -139,10 +139,10 @@ Celem tej modyfikacji jest ograniczenie overfittingu, czyli sytuacji, w której 
 ***
 #### Grid search:
 By dopasować najlepsze parametry stosujemy metodę grid search dla poniższych wartości:
-- Liczba neuronów w każdej warstwie $\in\{ 8, 16, 32\}$
-- Prawdopodobieństwo pominięcia neuronu $\in\{ 0, 0.1, 0.3 \}$
-- Learning rate $\in\{ 0.001, 0.005 \}$
-- Batch size $\in\{ 8, 16, 32 \}$
+- Liczba neuronów w każdej warstwie $\in\lbrace 8, 16, 32\rbrace$
+- Prawdopodobieństwo pominięcia neuronu $\in\lbrace 0, 0.1, 0.3 \rbrace$
+- Learning rate $\in\lbrace 0.001, 0.005 \rbrace$
+- Batch size $\in\lbrace 8, 16, 32 \rbrace$
 Staram się znaleźć modele za pomocą dwóch kryteriów. Jeden model o najmniejszej wartości straty dla zbioru danych walidacyjnych. Drugi model o największej dokładności dla zbioru danych walidacyjnych.
 
 #### ReLU:
