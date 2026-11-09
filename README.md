@@ -1,6 +1,6 @@
 # Zadanie 1
-Zadanie zawiera zarówno cały kod doświadczenia, jaki i dokumentację w dwóch wersjach. Tą bez wyspecyfikowanej nazwy można przeglądać w preview na GitHubie.
-Polecam jednak wersję tworzoną w edytorze Obsisian, gdyż tam wszystko dobrze się formatuje. Trzeba ściągnąć zdjęcia i plik do tego samego folderu, i wszystko powinno poprawnie się sformatować.
+Zadanie zawiera zarówno cały kod doświadczenia (.ipynb), jaki i dokumentację (.md). Dokumentacja działa w preview githuba.
+Przy pobieraniu dokumentacji trzeba również ściągnąć zdjęcia do tego samego folderu.
 
 # Zadanie 2
 Zadanie zawiera kod w formacie .ipynb oraz notatkę z analizowanych po wykładzie zagadnień
