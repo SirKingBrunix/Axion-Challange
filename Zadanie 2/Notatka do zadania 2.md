@@ -1,3 +1,5 @@
+# Notatka do zadania
+
 By zrozumieć przedstawiony na wykładzie materiał przerobiłem (z wyjątkiem końcowych algorytmów) materiał wideo z podesłanej bazy wiedzy:
 https://www.youtube.com/watch?v=tsbCSkvHhMo
 
