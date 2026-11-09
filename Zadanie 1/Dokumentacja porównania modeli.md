@@ -53,6 +53,7 @@ Korzystam z zaprogramowanego modelu z biblioteki sklearn, dla którego ustawiam 
 
 
 <img src="Images/Pasted%20image%2020261025114155.png" alt="Pasted image 20261025114155.png" width="500">
+
 ***
 Obserwacja:
 wyniki algorytmu kNN dla (n_neighbours = 1) są zaskakująco wysokie. Może być to spowodowane zjawiskiem Data Leakage. Jeżeli w zbiorze testowym są powtórki ze zbioru treningowego, to model znajduje punkty niemal idealnie:
@@ -74,7 +75,7 @@ Niestety z tego powodu liczba rekordów zmniejszyła się do 302. Ponownie stosu
 
 Na ich podstawie decyduję się ponownie na na nie korzystanie z metody oversampling.
 ***
-Sprawdzamy wyniki dla $n_{\text{neighbors}} \in \{1, 3, 5\}$. Otrzymujemy teraz realniejsze wyniki. Po sprawdzeniu zarówno zbiorze walidacyjnym najlepsze dla $n_{\text{neighbors}} = 5$:
+Sprawdzamy wyniki dla n_neighbors $\in \lbrace 1, 3, 5 \rbrace$. Otrzymujemy teraz realniejsze wyniki. Po sprawdzeniu zarówno zbiorze walidacyjnym najlepsze dla n_neighbors $= 5$:
 
 Testowe wyniki:
 
@@ -109,9 +110,10 @@ $$\text{ReLU}(x)=\max(0,x)$$
 Jako, że nasz wynik to binarna klasyfikacja, to w warstwie wyjściowej wystarczy użyć jednego neuronu z funkcją aktywacji sigmoid, by otrzymać wynik. Do uzyskania końcowej klasy stosuję próg decyzyjny równy 0,5. Jeśli przewidywane prawdopodobieństwo jest mniejsze niż 0,5, model przypisuje klasę 0. W przeciwnym przypadku przypisuje klasę 1.
 
 Użytą funkcją straty będzie binary_crossentropy (BCE), przeznaczona do klasyfikacji binarnej:
-$$
-BCE = - \frac{1}{N} \sum_{i=1}^{N}[y_i ln(p_i) + (1 - y_i)ln(1-p_i)]
-$$
+
+
+$$BCE = -\frac{1}{N}\sum_{i=1}^{N}(y_iln(p_i) + (1 - y_i)ln(1-p_i))$$
+
 - $N$ jest liczbą próbek
 - $y_i$ jest prawdziwą klasą danej próbki (0 lub 1)
 - $p_i$ jest przewidywanym prawdopodobieństwem $i$-tej próbki bycia w klasie 1
