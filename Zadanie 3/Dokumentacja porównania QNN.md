@@ -1,8 +1,16 @@
 # Dokumentacja QNN Comparison
 
 ### Problem Badawczy
-Jak zmiana standardowego threshold $\hat{y} = \begin{cases} -1 & f(x; \theta) < 0\\ 1 & \text{w przeciwnym razie} \end{cases}$
-na classical head $\hat{y} = sign(wf + b)$
+Jak zmiana standardowego threshold
+```math
+\hat{y} = \begin{cases} -1 & f(x; \theta) < 0\\ 1 & \text{w przeciwnym razie} \end{cases}
+```
+
+na classical head
+
+```math
+\hat{y} = \text{sign}(wf + b)
+```
 wpłynie na accuracy modelu przy tej samej liczbie epok. Czyli dodajemy dwa parametry, które będą modyfikowały output modelu.
 
 Oba modele buduje na identycznych:
@@ -10,16 +18,16 @@ Oba modele buduje na identycznych:
 - learning rate (${}lr{}$)
 - architekturach ansatz'u
 ### Hipoteza
-$l = (f - y)^{2}$ to wzór na MSE, którego będę używał do trenowania modelu (minimalizowania funkcji straty). $y \in \{ -1, 1 \}{}$. Gdyż ta wartość definiuje klasę, to by minimalizować funkcję straty, ${}f{}$ również będzie zbliżać się do tych wartości. Ponieważ (dla standard threshold) $f = \braket{Z_{0}} \in [-1, 1]$ to parametry $\theta$ będą musiały być skrajne. To może być szkodliwe dla gradientu, gdyż analizujemy kąty ${}\theta{}$ dla których ${}f{}$ ma wartości skrajne, więc jej pochodna czyli właśnie gradient, jest wypłaszczony.
+$l = (f - y)^{2}$ to wzór na MSE, którego będę używał do trenowania modelu (minimalizowania funkcji straty). $y \in \lbrace -1, 1 \rbrace{}$. Gdyż ta wartość definiuje klasę, to by minimalizować funkcję straty, ${}f{}$ również będzie zbliżać się do tych wartości. Ponieważ (dla standard threshold) $f = \braket{Z_{0}} \in [-1, 1]$ to parametry $\theta$ będą musiały być skrajne. To może być szkodliwe dla gradientu, gdyż analizujemy kąty ${}\theta{}$ dla których ${}f{}$ ma wartości skrajne, więc jej pochodna czyli właśnie gradient, jest wypłaszczony.
 
 Użycie dodatkowych parametrów ${}w{}$ i ${}b{}$ pozwala na wyliczenie:
-$$
+```math
 wf + b
-$$
+```
 Z tego powodu $f = \braket{Z_{0}}$ nie musi już osiągać wartości skrajnych, by minimalizować funkcję straty. Którą teraz wyrażamy wzorem:
-$$
+```math
 l = ((wf + b) - y)^{2}
-$$
+```
 Ważna uwaga - do samej klasyfikacji używamy: $\hat{y} = sign(wf + b)$.
 
 Model ze standard threshold będzie gorzej dopasowany w porównaniu z modelem z classical head, gdzie ${}\theta{}$ nie musi osiągać skrajnych wartości.
@@ -50,13 +58,13 @@ Na podstawie wyników algorytmu kNN na bazach danych stworzonych za pomocą:
 `X, y = make_moons(n_samples = 400, noise = noise, random_state = 42)`,
 gdzie noise $\in \lbrace 0.1, 0.2, 0.3, 0.4, 0.45, 0.5, 0.6 \rbrace$
 
-Wybieramy noise${}= 0.4{}$, dla którego accuracy${}= 0.79{}$
+Wybieramy noise = ${}0.4{}$, dla którego accuracy = ${}0.79{}$
 
 Dla baz danych `make_circles`:
 `X, y = make_circles(n_samples = 400, noise = noise, factor = 0.5, random_state = 42)`
 gdzie noise $\in \lbrace 0.1, 0.2, 0.3, 0.4, 0.45, 0.5, 0.6 \rbrace$
 
-Wybieramy noise${}=0.3{}$, dla którego accuracy${}=0.75{}$
+Wybieramy noise = ${}0.3{}$, dla którego accuracy = ${}0.75{}$
 
 Finalnie datasety:
 ![[Pasted image 20261111205320.png]](Images/Pasted%20image%2020261111205320.png)
@@ -71,10 +79,10 @@ Do obu sieci użyję tego samego obwodu, aby różniły one jedynie obecnością
 ![[Pasted image 20261111194020.png]](Images/Pasted%20image%2020261111194020.png)
 
 Do obu funkcji trenujących używam parametrów:
-- num_epochs${}= 50{}$
-- batch_size${}= 32{}$
-- lr${}= 0.1{}$
-- seed${}= 0{}$
+- num_epochs = ${}50{}$
+- batch_size = ${}32{}$
+- lr = ${}0.1{}$
+- seed = ${}0{}$
 #### Trening
 W obu funkcjach trenujących zachowuje dane, by zobaczyć jak przebiegało uczenie.
 `history = {"loss": [], "train_acc": [], "test_acc": [], "grad_norm": [], "grad_norm_full": [], "mean_abs_f_train": []}`
