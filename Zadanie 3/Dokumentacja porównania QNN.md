@@ -56,7 +56,7 @@ Dla baz danych `make_circles`:
 `X, y = make_circles(n_samples = 400, noise = noise, factor = 0.5, random_state = 42)`
 gdzie noise $\in \lbrace 0.1, 0.2, 0.3, 0.4, 0.45, 0.5, 0.6 \rbrace$
 
-Wybieramy noise${}= 0.3{}$, dla którego accuracy${}= 0.75{}$
+Wybieramy noise${}=0.3{}$, dla którego accuracy${}=0.75{}$
 
 Finalnie datasety:
 ![[Pasted image 20261111205320.png]](Images/Pasted%20image%2020261111205320.png)
