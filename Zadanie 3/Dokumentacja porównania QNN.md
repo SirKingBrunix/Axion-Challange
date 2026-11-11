@@ -1,3 +1,5 @@
+# Dokumentacja QNN Comparison
+
 ### Problem Badawczy
 Jak zmiana standardowego threshold $\hat{y} = \begin{cases} -1 & f(x; \theta) < 0\\ 1 & \text{w przeciwnym razie} \end{cases}$
 na classical head $\hat{y} = sign(wf + b)$
@@ -57,7 +59,7 @@ gdzie noise $\in \lbrace 0.1, 0.2, 0.3, 0.4, 0.45, 0.5, 0.6 \rbrace$
 Wybieramy noise${}= 0.3{}$, dla którego accuracy${}= 0.75{}$
 
 Finalnie datasety:
-![[Pasted image 20261111205320.png]]
+![[Pasted image 20261111205320.png]](Images/Pasted%20image%2020261111205320.png)
 
 Dzielimy datasety na:
 - X_train_c i y_train_c (80%) - zbiór do trenowania na dataset circles
@@ -66,7 +68,7 @@ Dzielimy datasety na:
 - X_test_m i y_test_m (20%) - zbiór do testowania na dataset moons
 #### QNN threshold i overhead
 Do obu sieci użyję tego samego obwodu, aby różniły one jedynie obecnością classical overhead:
-![[Pasted image 20261111194020.png]]
+![[Pasted image 20261111194020.png]](Images/Pasted%20image%2020261111194020.png)
 
 Do obu funkcji trenujących używam parametrów:
 - num_epochs${}= 50{}$
@@ -87,13 +89,13 @@ W obu funkcjach trenujących zachowuje dane, by zobaczyć jak przebiegało uczen
 Ponadto w funkcji trenującej z overhead zachowuję również parametry w i b.
 #### Wyniki i wnioski
 
-![[Pasted image 20261111230622.png]]
+![[Pasted image 20261111230622.png]](Images/Pasted%20image%2020261111230622.png)
 
-![[Pasted image 20261111230630.png]]
+![[Pasted image 20261111230630.png]](Images/Pasted%20image%2020261111230630.png)
 
-![[Pasted image 20261111230654.png]]
+![[Pasted image 20261111230654.png]](Images/Pasted%20image%2020261111230654.png)
 
-![[Pasted image 20261111230636.png]]
+![[Pasted image 20261111230636.png]](Images/Pasted%20image%2020261111230636.png)
 
 
 Powyższe wyniki z pewnością nie dają jasnych i klarownych wniosków, które pozwoliłyby obalić lub potwierdzić hipotezę. Nie należy, więc próbować dopasowywać rezultatów do hipotezy, a zauważyć pojawiające się zależności.
